@@ -9,7 +9,8 @@ jobs:
     name: Sync personal repos to gitee
     runs-on: ubuntu-latest
     steps:
-    - run: ls -la /root/ssh
+    - run: whoami 
+    - run: sudo ls -la /root/ssh
         
     - name: Sync persional repos
       uses: Yikun/hub-mirror-action@master
