@@ -10,7 +10,7 @@ fi
 git pull origin main:main
 git add -A
 git commit -m "${message}${USER} 更新于 ${date}."
-git push -u origin mian
+git push -u origin mian --force
 
 echo "更新并推送成功！"
 exit 0;
