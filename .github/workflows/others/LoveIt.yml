@@ -1,0 +1,27 @@
+name: Sync LoveIt
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: '0 50 3 * * ? *'
+jobs:
+  build:
+
+  run:
+    name: Sync LoveIt to Gitee
+    runs-on: ubuntu-latest
+    steps:
+    # 同步个人仓库
+    - name: Sync LoveIt
+    uses: Yikun/hub-mirror-action@master
+    with:
+      src: github/dillonzq
+      dst: gitee/synchub
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+      dst_token: ${{ secrets.GITEE_TOKEN }}
+      account_type: user
+      static_list: "LoveIt"
+      clone_style: "ssh"
+      force_update: true
+      debug: true
+

@@ -1,0 +1,26 @@
+name: Sync personal repos
+on:
+  pull_request:
+  push:
+  schedule:
+    - cron: '0 30 3 * * ? *'
+jobs:
+  build:
+
+  run:
+    name: Sync personal repos to gitee
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sync persional repos
+    uses: Yikun/hub-mirror-action@master
+    with:
+      src: github/bugshub
+      dst: gitee/jonnyhub
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+      dst_token: ${{ secrets.GITEE_TOKEN }}
+      account_type: user
+      static_list: "jonnyhub"
+      clone_style: "ssh"
+      force_update: true
+      debug: true
+
