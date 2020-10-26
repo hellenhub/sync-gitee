@@ -11,7 +11,8 @@ jobs:
     steps:
     
     - name: authorise ssh host
-      run: sudo mkdir /root/.ssh/ \
+      run: 
+        if [ ! -d "/root/.ssh" ]; then sudo mkdir /root/.ssh/ fi \
         && sudo chmod 700 /root/.ssh \
         && sudo ssh-keyscan github.com > /root/.ssh/known_hosts
 
