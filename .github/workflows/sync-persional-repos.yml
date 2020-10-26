@@ -11,7 +11,7 @@ jobs:
     steps:
     
     - name: authorise ssh host
-      run: __scripts__/verify-no-unstaged-changes.sh
+      run: __scripts__/verify-ssh-key.sh
         
     - name: Sync persional repos
       uses: Yikun/hub-mirror-action@master
