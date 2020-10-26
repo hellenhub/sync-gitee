@@ -1,0 +1,55 @@
+name: Gitee repos mirror periodic jobs
+on:
+  pull_request:
+  push:
+  push:
+  schedule:
+    - cron: '0 30 3 * * ? *'
+jobs:
+  build:
+
+  run:
+    name: Sync Repos to Gitee
+    runs-on: ubuntu-latest
+    steps:
+    # 同步个人仓库
+    - name: Sync persional repos
+    uses: Yikun/hub-mirror-action@master
+    with:
+      src: github/bugshub
+      dst: gitee/jonnyhub
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+      dst_token: ${{ secrets.GITEE_TOKEN }}
+      account_type: user
+      static_list: "jonnyhub"
+      clone_style: "ssh"
+      force_update: true
+      debug: true
+
+    # 同步其他组织仓库
+    - name: Sync  LoveIt
+    uses: Yikun/hub-mirror-action@master
+    with:
+      src: github/dillonzq
+      dst: gitee/synchub
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+      dst_token: ${{ secrets.GITEE_TOKEN }}
+      account_type: user
+      static_list: "LoveIt"
+      clone_style: "ssh"
+      force_update: true
+      debug: true
+
+    - name: Sync  webhookd
+    uses: Yikun/hub-mirror-action@master
+    with:
+      src: github/ncarlier
+      dst: gitee/synchub
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+      dst_token: ${{ secrets.GITEE_TOKEN }}
+      account_type: user
+      static_list: "webhookd"
+      clone_style: "ssh"
+      force_update: true
+      debug: true
+      

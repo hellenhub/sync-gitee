@@ -1,45 +1,45 @@
 name: "Hub Mirror Action."
-description: "Mirror the organization repos between hub (github/gitee)."
-author: "yikun"
+description: "在不同的 git 版本控制系统中同步代码。 (github/gitee)."
+author: "Jonny.Chang"
 branding:
   icon: "upload-cloud"
   color: "gray-dark"
 inputs:
   dst_key:
-    description: "The private SSH key which is used to to push code in destination hub."
+    description: "专用 SSH 密钥，用于在系统之间推送代码。"
     required: true
   dst_token:
-    description: "The app token which is used to  create repo in destination hub."
+    description: "Token 用于在系统中创建仓库。"
     required: true
   dst:
-    description: "Destination name. Such as `gitee/kunpengcompute`."
+    description: "目标组织名称。"
     required: true
   src:
-    description: "Source name. Such as `github/kunpengcompute`."
+    description: "源组织名称。"
     required: true
   account_type:
-    description: "The account type. Such as org, user."
+    description: "同步账户类型：org, user。默认 user。"
     default: 'user'
   clone_style:
-    description: "The git clone style, https or ssh."
+    description: "克隆模式 https 或 ssh；默认 https。"
     default: 'https'
   cache_path:
-    description: "The path to cache the source repos code."
+    description: "缓存路径，默认： /github/workspace/hub-mirror-cache 。"
     default: '/github/workspace/hub-mirror-cache'
   black_list:
-    description: "Hight priority, the back list of mirror repo. like 'repo1,repo2,repo3'"
+    description: "高优先级，仓库黑名单列表，如：'repo1,repo2,repo3'"
     default: ''
   white_list:
-    description: "Low priority, the white list of mirror repo. like 'repo1,repo2,repo3'"
+    description: "低优先级, 仓库白名单列表，如：'repo1,repo2,repo3'"
     default: ''
   static_list:
-    description: "Only mirror repo in the static list, but don't get from repo api (the white/black list is still available). like 'repo1,repo2,repo3'"
+    description: "单仓库列表，不要从黑白名单中导入，如：'repo1,repo2,repo3'"
     default: ''
   force_update:
-    description: "Force to update the destination repo, use '-f' flag do 'git push'"
+    description: "强制更新仓库，在'git push'使用'-f'参数"
     default: false
   debug:
-    description: "Enable the debug flag to show detail log"
+    description: "开启 debug 可以显示详细日志。"
     default: false
 runs:
   using: "docker"
