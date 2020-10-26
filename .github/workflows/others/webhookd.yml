@@ -3,9 +3,7 @@ on:
   pull_request:
   push:
   schedule:
-    - cron: '0 50 3 * * ? *'
-jobs:
-  build:
+    - cron: '06 2 * * *'
 
   run:
     name: Sync webhookd to Gitee

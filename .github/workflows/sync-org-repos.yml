@@ -3,10 +3,8 @@ on:
   pull_request:
   push:
   schedule:
-    - cron: '0 40 3 * * ? *'
+    - cron: '02 2 * * *'
 jobs:
-  build:
-
   run:
     name: Sync org repos to gitee
     runs-on: ubuntu-latest

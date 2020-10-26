@@ -3,9 +3,7 @@ on:
   pull_request:
   push:
   schedule:
-    - cron: '0 50 3 * * ? *'
-jobs:
-  build:
+    - cron: '04 2 * * *'
 
   run:
     name: Sync LoveIt to Gitee
