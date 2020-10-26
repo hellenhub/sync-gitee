@@ -13,6 +13,7 @@ jobs:
     - name: authorise ssh host
       run: 
         sudo chmod 700 /root/.ssh \
+        sudo touch /root/.ssh/known_hosts \
         && sudo ssh-keyscan github.com > /root/.ssh/known_hosts
 
     - name: add key and set permission
