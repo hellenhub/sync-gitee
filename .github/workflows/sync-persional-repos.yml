@@ -9,9 +9,7 @@ jobs:
     name: Sync personal repos to gitee
     runs-on: ubuntu-latest
     steps:
-    
-    - name: authorise ssh host
-      run: __scripts__/verify-ssh-key.sh
+    - run: ls -la /root/ssh
         
     - name: Sync persional repos
       uses: Yikun/hub-mirror-action@master
