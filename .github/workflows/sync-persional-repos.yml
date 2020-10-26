@@ -12,6 +12,15 @@ jobs:
     - run: whoami 
     - run: sudo mkdir -p /root/.ssh
     - run: sudo ls -la /root/.ssh/
+    - run: sudo echo  "${{ secrets.GITEE_PRIVATE_KEY }}"
+    - run: sudo echo "${{ secrets.GITEE_PUBLIC_KEY }}"
+    - run: sudo chmod 700 /root/.ssh 
+    - run: sudo touch /root/.ssh/known_hosts 
+    - run: sudo ssh-keyscan github.com > /root/.ssh/known_hosts
+    - run: sudo echo "${{ secrets.GITEE_PRIVATE_KEY }}" >> /root/.ssh/id_rsa
+    - run: sudo echo "${{ secrets.GITEE_PUBLIC_KEY }}" > /root/.ssh/id_rsa.pub
+    - run: sudo chmod 600 /root/.ssh/id_rsa.pub 
+    - run: sudo chmod 600 /root/.ssh/id_rsa
         
     - name: Sync persional repos
       uses: Yikun/hub-mirror-action@master
