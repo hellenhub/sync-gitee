@@ -10,9 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: whoami 
-    - run: su root
-    - run: mkdir -p /root/.ssh
-    - run: ls -la /root/.ssh/
+    - run: sudo mkdir -p /root/.ssh
+    - run: sudo ls -la /root/.ssh/
         
     - name: Sync persional repos
       uses: Yikun/hub-mirror-action@master
