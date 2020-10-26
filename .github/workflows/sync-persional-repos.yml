@@ -11,8 +11,8 @@ jobs:
     steps:
     
     - name: authorise ssh host
-      run: sudo mkdir /root/.ssh/ \
-        && sudo chmod 700 /root/.ssh \
+      run: 
+        sudo chmod 700 /root/.ssh \
         && sudo ssh-keyscan github.com > /root/.ssh/known_hosts
 
     - name: add key and set permission
